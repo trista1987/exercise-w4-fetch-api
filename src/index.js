@@ -18,10 +18,27 @@ const types = document.getElementById("types");
 //    it's fetching the pokemons from the pokemon endpoint and
 //    logs the results in the console.
 //    HINT --> Don't forget to invoke the function
+// const fetchPokemons = () => {
+//   /*Fetch all pokemons here*/
+//   fetch('https://pokeapi.co/api/v2/pokemon/?limit=5')
+//   .then(response => response.json())
+//   .then(data => 
+//     // console.log(data.results))
+//     //is this error correct? should it be defined?
+//     data.results.forEach(element => console.log(element.name))
 
-const fetchPokemons = () => {
-  /*Fetch all pokemons here*/
-};
+// )};
+// fetchPokemons()
+
+// const fetchPokemons = () => {
+//   fetch('https://pokeapi.co/api/v2/pokemon/')
+//   .then(response => response.json())
+//   .then(data => 
+//     data.results.forEach(element => {
+//       console.log(element.name)
+//     }))
+// }
+// fetchPokemons()
 
 // 2) a) As you can see, we get some metadata as well as
 //    the results of the fetch. Change the console.log so
@@ -39,15 +56,19 @@ const fetchPokemons = () => {
 //    and pick a pokemon that you would like to continue
 //    working with. Copy the pokemon's URL.
 
+// const limitPokmon = () => {
+//   fetch('https://pokeapi.co/api/v2/pokemon/?limit=5')
+//   .then(response => response.json())
+//   .then(data => 
+//     console.log (data.results[0].url))
+// }
+// limitPokmon()
 // 4) Now that we've picked a pokemon, we will do a new fetch
 //    to the URL we copied. Since that's another endpoint,
 //    we will create a new fetch inside the fetchBulbasaurData
 //    function (change the function's name to fit your pokemon).
 //    Log the data in the console and see what you find.
 
-const fetchBulbasaurData = () => {
-  /*Fetch singular pokemon here*/
-};
 
 // 5) After familiarizing with the data, we will use the data
 //    to change our table. We will give you the image as a start.
@@ -56,6 +77,31 @@ const fetchBulbasaurData = () => {
 //    image.src = json.sprites.front_default;
 //    Copy that line into the fetchBulbasaurData and hopefully
 //    the image in the HTML updates.
+const fetchBulbasaurData = () => {
+  fetch('https://pokeapi.co/api/v2/pokemon/1/')
+  .then(response => response.json())
+  .then(data => {console.log(data)
+  fillDetail(data)
+  console.log(data.types[0])})
+  
+}
+fetchBulbasaurData()
+
+const fillDetail = (param) =>{
+  image.src = param.sprites.front_default
+  name.innerHTML = param.name
+  height.innerHTML = param.height
+  weight.innerHTML = param.weight
+  types.innerHTML = ''
+  const typeName = param.types.map(element=> element.type.name).join(',')
+  types.textContent = typeName
+  
+}
+
+
+
+
+
 
 // 6) Update the innerHTML of the other rows as well after
 //    you've found the correct path in the json.
