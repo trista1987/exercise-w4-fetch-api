@@ -99,9 +99,6 @@ const fillDetail = (param) =>{
 
 
 
-
-
-
 // 6) Update the innerHTML of the other rows as well after
 //    you've found the correct path in the json.
 //    HINT --> Log stuff in the console to try things out
