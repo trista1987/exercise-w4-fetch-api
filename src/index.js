@@ -82,7 +82,7 @@ const fetchBulbasaurData = () => {
   .then(response => response.json())
   .then(data => {console.log(data)
   fillDetail(data)
-  console.log(data.types[0])})
+  console.log(data.types[0].type)})
   
 }
 fetchBulbasaurData()
@@ -93,9 +93,8 @@ const fillDetail = (param) =>{
   height.innerHTML = param.height
   weight.innerHTML = param.weight
   types.innerHTML = ''
-  const typeName = param.types.map(element=> element.type.name).join(',')
-  types.textContent = typeName
-  
+  const typeName = param.types.map(element=> element.type.name)//para.types is an array. element = para.types
+  types.innerHTML = typeName
 }
 
 
